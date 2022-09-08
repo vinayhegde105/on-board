@@ -37,6 +37,7 @@ elif cloud == 3:
     if os.path.exists("aws.py"): os.system("rm aws.py")
     exec(open("gcp.py").read())
     os.chdir(cwd)
+    print(cwd)
     if os.path.exists("onboard_script"): os.system("rm -rf onboard_script")
 else:
     print("Wrong input received...")
