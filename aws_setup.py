@@ -1,13 +1,14 @@
 import os
+from getpass import getpass
 
 print("---------------------------------------------------------------------------------------------------------")
-folder = int(input("Kindly Select your task:\n1.AWS IaC Project Provision         2.AFT Setup        3.Add service connection to ADO Project       4.centralized logging setup\n\nYour input: "))
+folder = int(input("Kindly Select your task:\n1.AWS IaC Project         2.AFT Setup        3.Add service connection to ADO Project       4.centralized logging setup\n\nYour input: "))
 
 if folder == 1:
     print("---------------------------------------------------------------------------------------------------------")
-    ado_agent = int(input("Kindly select your agent type to provision ADO...\n1.cloud-hosted pool       2.Selfhosted EKS pool       3.Selfhosted ASG pool\n4.Add selfhosted agent to ADO\nYour input:"))
+    ado_agent = int(input("Kindly select your agent type to provision ADO...\n1.cloud-hosted pool       2.Selfhosted EKS pool       3.Selfhosted ASG pool      4.ADD selfhosted agent to ADO\n\nYour input:"))
     print("---------------------------------------------------------------------------------------------------------")
-    centralizedpat = input("Enter Insight Central repo PAT tocken: ")
+    centralizedpat = getpass("Enter Insight Central repo PAT tocken: ")
 
     if ado_agent == 1:
         print("---------------------------------------------------------------------------------------------------------")
@@ -75,7 +76,7 @@ elif folder==2:
     print("---------------------------------------------------------------------------------------------------------")
     script_choice = int(input("Select your Task:\n1.Create       2.Destroy"))
     print("---------------------------------------------------------------------------------------------------------")
-    centralizedpat = input("Enter Insight Central repo PAT tocken: ")
+    centralizedpat = getpass("Enter Insight Central repo PAT tocken: ")
     os.system(f"git clone --sparse --filter=blob:none --depth=1 https://{centralizedpat}@dev.azure.com/nsitmspdevops/Insight%20CMP%20Centralized%20Repository/_git/aws_onboard")
     cwd = os.getcwd()
     os.chdir(f"{cwd}/aws_onboard")
@@ -93,7 +94,7 @@ elif folder==3:
     print("---------------------------------------------------------------------------------------------------------")
     script_choice = int(input("How many Service Connection you want to add:\n1.ONE       2.TWO       3.THREE\nYour input: "))
     print("---------------------------------------------------------------------------------------------------------")
-    centralizedpat = input("Enter Insight Central repo PAT tocken: ")
+    centralizedpat = getpass("Enter Insight Central repo PAT tocken: ")
     os.system(f"git clone --sparse --filter=blob:none --depth=1 https://{centralizedpat}@dev.azure.com/nsitmspdevops/Insight%20CMP%20Centralized%20Repository/_git/aws_onboard")
     cwd = os.getcwd()
     os.chdir(f"{cwd}/aws_onboard")
@@ -114,7 +115,7 @@ elif folder==3:
 elif folder==4:
     print("---------------------------------------------------------------------------------------------------------")
     script_choice = int(input("Select your Task:\n1.Setup Logging       2.add accounts to exsisting logging       3.Destroy logging\nYour input: "))
-    centralizedpat = input("Enter Insight Central repo PAT tocken: ")
+    centralizedpat = getpass("Enter Insight Central repo PAT tocken: ")
     os.system(f"git clone --sparse --filter=blob:none --depth=1 https://{centralizedpat}@dev.azure.com/nsitmspdevops/Insight%20CMP%20Centralized%20Repository/_git/aws_onboard")
     print("---------------------------------------------------------------------------------------------------------")
     cwd = os.getcwd()
